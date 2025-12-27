@@ -20,7 +20,7 @@ function addTodo() {
     // Create text span
     const span = document.createElement('span');
     span.className = 'todo-text';
-    span.textContent = todoText;
+    span.textContent = '⚔️ ' + todoText;
     span.onclick = function() {
         span.classList.toggle('completed');
     };
