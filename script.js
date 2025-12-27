@@ -9,7 +9,7 @@ function addTodo() {
     const todoText = todoInput.value.trim();
     
     if (todoText === '') {
-        alert('Please enter a task!');
+        alert('Please enter a quest!');
         return;
     }
     
@@ -20,7 +20,7 @@ function addTodo() {
     // Create text span
     const span = document.createElement('span');
     span.className = 'todo-text';
-    span.textContent = todoText;
+    span.textContent = '⚔️ ' + todoText;
     span.onclick = function() {
         span.classList.toggle('completed');
     };
@@ -54,7 +54,7 @@ function checkEmptyState() {
         if (!existingEmptyState) {
             const emptyMessage = document.createElement('li');
             emptyMessage.className = 'empty-state';
-            emptyMessage.textContent = 'No tasks yet. Add one to get started!';
+            emptyMessage.textContent = 'No quests yet. Add one to get started!';
             todoList.appendChild(emptyMessage);
         }
     } else {
