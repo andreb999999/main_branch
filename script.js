@@ -2,6 +2,7 @@
 const todoInput = document.getElementById('todoInput');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
+const themeToggle = document.getElementById('themeToggle');
 
 // Add todo function
 function addTodo() {
@@ -72,5 +73,24 @@ todoInput.addEventListener('keypress', function(e) {
     }
 });
 
-// Initialize empty state
+// Theme toggle functionality
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    const isDark = document.body.classList.contains('dark-theme');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.textContent = '☀️';
+    }
+}
+
+themeToggle.addEventListener('click', toggleTheme);
+
+// Initialize
+loadTheme();
 checkEmptyState();

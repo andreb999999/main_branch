@@ -4,30 +4,89 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --container-bg: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #999999;
+    --input-border: #e0e0e0;
+    --input-focus: #667eea;
+    --btn-primary: #667eea;
+    --btn-primary-hover: #5568d3;
+    --btn-danger: #e74c3c;
+    --btn-danger-hover: #c0392b;
+    --item-bg: #f8f9fa;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme {
+    --bg-gradient-start: #1a1a2e;
+    --bg-gradient-end: #16213e;
+    --container-bg: #0f3460;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --input-border: #2c3e50;
+    --input-focus: #667eea;
+    --btn-primary: #667eea;
+    --btn-primary-hover: #5568d3;
+    --btn-danger: #e74c3c;
+    --btn-danger-hover: #c0392b;
+    --item-bg: #1a2332;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --shadow-light: rgba(0, 0, 0, 0.3);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--container-bg);
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px var(--shadow-color);
 }
 
 .container {
-    background: white;
+    background: var(--container-bg);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px var(--shadow-color);
     width: 100%;
     max-width: 500px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-primary);
     text-align: center;
     margin-bottom: 30px;
     font-size: 2em;
+    transition: color 0.3s ease;
 }
 
 .input-section {
@@ -39,20 +98,22 @@ h1 {
 #todoInput {
     flex: 1;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    background: var(--container-bg);
+    color: var(--text-primary);
+    transition: border-color 0.3s, background 0.3s ease, color 0.3s ease;
 }
 
 #todoInput:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: var(--input-focus);
 }
 
 #addBtn {
     padding: 12px 25px;
-    background: #667eea;
+    background: var(--btn-primary);
     color: white;
     border: none;
     border-radius: 8px;
@@ -63,7 +124,7 @@ h1 {
 }
 
 #addBtn:hover {
-    background: #5568d3;
+    background: var(--btn-primary-hover);
 }
 
 #todoList {
@@ -75,33 +136,33 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: #f8f9fa;
+    background: var(--item-bg);
     border-radius: 8px;
     margin-bottom: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
 }
 
 .todo-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 .todo-text {
     flex: 1;
-    color: #333;
+    color: var(--text-primary);
     font-size: 16px;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .todo-text.completed {
     text-decoration: line-through;
-    color: #999;
+    color: var(--text-secondary);
 }
 
 .delete-btn {
     padding: 8px 16px;
-    background: #e74c3c;
+    background: var(--btn-danger);
     color: white;
     border: none;
     border-radius: 6px;
@@ -111,12 +172,13 @@ h1 {
 }
 
 .delete-btn:hover {
-    background: #c0392b;
+    background: var(--btn-danger-hover);
 }
 
 .empty-state {
     text-align: center;
-    color: #999;
+    color: var(--text-secondary);
     padding: 40px 20px;
     font-size: 18px;
+    transition: color 0.3s ease;
 }
