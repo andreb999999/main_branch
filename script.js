@@ -9,7 +9,7 @@ function addTodo() {
     const todoText = todoInput.value.trim();
     
     if (todoText === '') {
-        alert('Please enter a task!');
+        alert('Please enter a quest!');
         return;
     }
     
