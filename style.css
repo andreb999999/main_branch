@@ -5,126 +5,170 @@
 }
 
 :root {
-    --bg-gradient-start: #667eea;
-    --bg-gradient-end: #764ba2;
+    --bg-gradient-start: #6366f1;
+    --bg-gradient-end: #8b5cf6;
     --container-bg: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #999999;
-    --input-border: #e0e0e0;
-    --input-focus: #667eea;
-    --btn-primary: #667eea;
-    --btn-primary-hover: #5568d3;
-    --btn-danger: #e74c3c;
-    --btn-danger-hover: #c0392b;
-    --item-bg: #f8f9fa;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --shadow-light: rgba(0, 0, 0, 0.1);
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --input-border: #e5e7eb;
+    --input-focus: #6366f1;
+    --btn-primary: #6366f1;
+    --btn-primary-hover: #4f46e5;
+    --btn-danger: #ef4444;
+    --btn-danger-hover: #dc2626;
+    --item-bg: #f9fafb;
+    --shadow-color: rgba(99, 102, 241, 0.15);
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --completed-color: #9ca3af;
 }
 
 body.dark-theme {
-    --bg-gradient-start: #1a1a2e;
-    --bg-gradient-end: #16213e;
-    --container-bg: #0f3460;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --input-border: #2c3e50;
-    --input-focus: #667eea;
-    --btn-primary: #667eea;
-    --btn-primary-hover: #5568d3;
-    --btn-danger: #e74c3c;
-    --btn-danger-hover: #c0392b;
-    --item-bg: #1a2332;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --shadow-light: rgba(0, 0, 0, 0.3);
+    --bg-gradient-start: #111827;
+    --bg-gradient-end: #1f2937;
+    --container-bg: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --input-border: #374151;
+    --input-focus: #6366f1;
+    --btn-primary: #6366f1;
+    --btn-primary-hover: #4f46e5;
+    --btn-danger: #ef4444;
+    --btn-danger-hover: #dc2626;
+    --item-bg: #111827;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-light: rgba(0, 0, 0, 0.25);
+    --completed-color: #6b7280;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    transition: background 0.3s ease;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    top: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: none;
     background: var(--container-bg);
     color: var(--text-primary);
     font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 12px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px var(--shadow-light);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px var(--shadow-color);
+    transform: scale(1.08) rotate(10deg);
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
 }
 
 .container {
     background: var(--container-bg);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 30px var(--shadow-color);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px var(--shadow-color);
     width: 100%;
-    max-width: 500px;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    max-width: 540px;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
     color: var(--text-primary);
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2em;
-    transition: color 0.3s ease;
+    margin-bottom: 32px;
+    font-size: 2.25em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .input-section {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 28px;
 }
 
 #todoInput {
     flex: 1;
-    padding: 12px 15px;
+    padding: 14px 18px;
     border: 2px solid var(--input-border);
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 16px;
+    font-weight: 500;
     background: var(--container-bg);
     color: var(--text-primary);
-    transition: border-color 0.3s, background 0.3s ease, color 0.3s ease;
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #todoInput:focus {
     outline: none;
     border-color: var(--input-focus);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+#todoInput::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
 }
 
 #addBtn {
-    padding: 12px 25px;
+    padding: 14px 32px;
     background: var(--btn-primary);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 #addBtn:hover {
     background: var(--btn-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+#addBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 #todoList {
@@ -135,50 +179,91 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 18px 20px;
     background: var(--item-bg);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: todoAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
 }
 
 .todo-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-light);
+    transform: translateX(4px);
+    box-shadow: 0 6px 16px var(--shadow-light);
+    border-color: var(--input-border);
+}
+
+@keyframes todoAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .todo-text {
     flex: 1;
     color: var(--text-primary);
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1.5;
 }
 
 .todo-text.completed {
     text-decoration: line-through;
-    color: var(--text-secondary);
+    color: var(--completed-color);
+    opacity: 0.7;
 }
 
 .delete-btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background: var(--btn-danger);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
 }
 
 .delete-btn:hover {
     background: var(--btn-danger-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.delete-btn:active {
+    transform: scale(0.98);
 }
 
 .empty-state {
     text-align: center;
     color: var(--text-secondary);
-    padding: 40px 20px;
-    font-size: 18px;
-    transition: color 0.3s ease;
+    padding: 48px 24px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
