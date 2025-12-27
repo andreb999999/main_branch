@@ -83,7 +83,7 @@ body {
     background: var(--container-bg);
     border-radius: 8px;
     padding: 48px;
-    box-shadow: 0 20px 60px var(--shadow-color), inset 0 0 0 3px var(--input-border);
+    box-shadow: 0 20px 60px var(--shadow-color);
     width: 100%;
     max-width: 540px;
     transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), 

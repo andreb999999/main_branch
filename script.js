@@ -54,7 +54,7 @@ function checkEmptyState() {
         if (!existingEmptyState) {
             const emptyMessage = document.createElement('li');
             emptyMessage.className = 'empty-state';
-            emptyMessage.textContent = 'No tasks yet. Add one to get started!';
+            emptyMessage.textContent = 'No quests yet. Add one to get started!';
             todoList.appendChild(emptyMessage);
         }
     } else {
